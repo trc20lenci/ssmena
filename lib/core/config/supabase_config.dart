@@ -1,7 +1,5 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-/// Central place for Supabase configuration. Values load from `.env`
-/// (see `.env.example`) — never hardcode secrets (SMENA_CODING_GUIDE §8).
 class SupabaseConfig {
   SupabaseConfig._();
 
@@ -13,10 +11,10 @@ class SupabaseConfig {
     return value;
   }
 
-  static String get anonKey {
-    final value = dotenv.env['SUPABASE_ANON_KEY'];
+  static String get publishableKey {
+    final value = dotenv.env['SUPABASE_PUBLISHABLE_KEY'];
     if (value == null || value.isEmpty) {
-      throw StateError('SUPABASE_ANON_KEY is missing. Check your .env file.');
+      throw StateError('SUPABASE_PUBLISHABLE_KEY is missing. Check your .env file.');
     }
     return value;
   }

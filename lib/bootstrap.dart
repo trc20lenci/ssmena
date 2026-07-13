@@ -18,11 +18,11 @@ Future<void> bootstrap() async {
   // Never hardcode secrets — see SMENA_CODING_GUIDE §8.
   await dotenv.load(fileName: '.env');
 
-  await Supabase.initialize(
-    url: SupabaseConfig.url,
-    anonKey: SupabaseConfig.anonKey,
-    debug: SupabaseConfig.debugMode,
-  );
+await Supabase.initialize(
+  url: SupabaseConfig.url,
+  publishableKey: SupabaseConfig.publishableKey,   // было: anonKey: SupabaseConfig.anonKey
+  debug: SupabaseConfig.debugMode,
+);
 
   // SharedPreferences needs async init, so it can't live inside a plain
   // Riverpod Provider — we create it once here and inject it via override.

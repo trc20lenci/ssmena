@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.smena.app-mergeDebugResources-43:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Soswa\\.gradle\\caches\\9.1.0\\transforms\\b296b55fa3aa22906dc5daca83bcff19\\workspace\\transformed\\appcompat-1.1.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}

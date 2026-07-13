@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+ 
   # State management — SMENA_ARCHITECTURE §2.3
   flutter_riverpod: ^2.5.1
 
