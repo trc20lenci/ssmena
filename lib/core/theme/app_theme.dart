@@ -4,8 +4,9 @@ import 'app_colors.dart';
 import 'app_radius.dart';
 import 'text_styles.dart';
 
-/// SMENA is dark-mode-only in v1.0 — SMENA_AI_RULES "Dark Mode First".
-/// Do not add a light theme.
+/// Dark-mode-only, industrial/minimal theme — no light mode, no glass,
+/// no gradients. Depth comes from flat color steps
+/// (bgBase -> bgSurface -> bgCard), never from blur or shadow tricks.
 class AppTheme {
   AppTheme._();
 
@@ -16,11 +17,11 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.bgBase,
       canvasColor: AppColors.bgBase,
       colorScheme: const ColorScheme.dark(
-        primary: AppColors.primary,
-        onPrimary: AppColors.textInverse,
-        surface: AppColors.bgElevated,
+        primary: AppColors.accent,
+        onPrimary: AppColors.textPrimary,
+        surface: AppColors.bgCard,
         onSurface: AppColors.textPrimary,
-        error: AppColors.error,
+        error: AppColors.danger,
       ),
       textTheme: TextTheme(
         displayLarge: AppTextStyles.displayLg,
@@ -39,55 +40,69 @@ class AppTheme {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         centerTitle: false,
+        iconTheme: IconThemeData(color: AppColors.textPrimary),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: AppColors.textPrimary, // white primary CTA — Uber/Apple pattern
           foregroundColor: AppColors.textInverse,
-          minimumSize: const Size.fromHeight(54), // Design System §7 — Large/Primary CTA
+          disabledBackgroundColor: AppColors.bgCard,
+          disabledForegroundColor: AppColors.textMuted,
+          minimumSize: const Size.fromHeight(54),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.sm)),
-          textStyle: AppTextStyles.label.copyWith(letterSpacing: 0.6),
+          textStyle: AppTextStyles.label.copyWith(fontSize: 15, letterSpacing: 0.2),
+          elevation: 0,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.textPrimary,
-          minimumSize: const Size.fromHeight(44), // Standard
-          side: const BorderSide(color: AppColors.borderStrong),
+          minimumSize: const Size.fromHeight(44),
+          side: const BorderSide(color: AppColors.border),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.sm)),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: AppColors.textSecondary),
+        style: TextButton.styleFrom(foregroundColor: AppColors.accent),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColors.bgElevated,
+        fillColor: AppColors.bgSurface,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.sm),
-          borderSide: const BorderSide(color: AppColors.borderSubtle),
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.sm),
-          borderSide: const BorderSide(color: AppColors.borderSubtle),
+          borderSide: const BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.sm),
-          borderSide: const BorderSide(color: AppColors.primary, width: 2),
+          borderSide: const BorderSide(color: AppColors.accent, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.sm),
-          borderSide: const BorderSide(color: AppColors.error),
+          borderSide: const BorderSide(color: AppColors.danger),
         ),
-        hintStyle: AppTextStyles.bodyLg.copyWith(color: AppColors.textTertiary),
+        hintStyle: AppTextStyles.bodyLg.copyWith(color: AppColors.textMuted),
       ),
-      dividerTheme: const DividerThemeData(color: AppColors.borderSubtle, thickness: 1),
+      dividerTheme: const DividerThemeData(color: AppColors.border, thickness: 1),
       cardTheme: CardThemeData(
-        color: AppColors.bgElevated,
+        color: AppColors.bgCard,
         elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.md),
+          side: const BorderSide(color: AppColors.border),
+        ),
         margin: EdgeInsets.zero,
+      ),
+      chipTheme: ChipThemeData(
+        backgroundColor: AppColors.bgCard,
+        selectedColor: AppColors.accentSubtle,
+        labelStyle: AppTextStyles.bodySm,
+        side: const BorderSide(color: AppColors.border),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.pill)),
       ),
     );
   }
